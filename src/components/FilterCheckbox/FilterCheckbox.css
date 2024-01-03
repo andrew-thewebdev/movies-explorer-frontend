@@ -1,0 +1,37 @@
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  margin: 0 0 10px 0px;
+  padding-bottom: 43px;
+  border-bottom: 1px solid rgba(170, 170, 170, 0.2);
+}
+
+.filter__tumbler:hover {
+  cursor: pointer;
+}
+
+.filter__title {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .filter {
+    margin: 0 0px 10px 0px;
+    padding-bottom: 51px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .filter {
+    margin: 0 0px 10px 0px;
+    padding-bottom: 63px;
+  }
+  .filter__title {
+    font-size: 11px;
+  }
+}

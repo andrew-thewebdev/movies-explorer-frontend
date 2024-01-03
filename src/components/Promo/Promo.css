@@ -1,0 +1,138 @@
+.promo {
+  position: relative;
+  background: #073042;
+  color: white;
+  padding-left: calc((100vw - 1140px) / 2);
+  padding-right: calc((100vw - 1140px) / 2);
+
+  padding-bottom: 85px;
+}
+
+.promo__title {
+  margin: 0;
+  padding-top: 77px;
+  font-family: Inter;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  width: 630px;
+}
+
+.promo__subtitle {
+  margin: 0;
+  margin-top: 36px;
+  margin-bottom: 155px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 310px;
+  opacity: 0.5;
+}
+
+.promo__more-btn {
+  margin: 0;
+  margin-bottom: 75px;
+  padding: 10px 20px;
+
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  text-decoration: none;
+}
+
+.promo__more-btn:hover {
+  opacity: 0.8;
+}
+
+.promo__globus-img {
+  position: absolute;
+  top: 75px;
+  right: calc((100vw - 1140px) / 2);
+  display: block;
+  width: 310px;
+  height: 304px;
+}
+
+@media screen and (max-width: 1279px) {
+  .promo {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 1px;
+  }
+
+  .promo__title {
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 48px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .promo__subtitle {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 22px;
+    width: 260px;
+  }
+
+  .promo__globus-img {
+    position: static;
+    padding-top: 140px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .promo__more-btn {
+    padding: 0;
+    display: flex;
+    width: 129px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+    margin-top: 90px;
+    margin-bottom: 76px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .promo__title {
+    padding-top: 43px;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 38px; /* 126.667% */
+    letter-spacing: -1.2px;
+    width: 300px;
+  }
+
+  .promo__globus-img {
+    padding-top: 70px;
+    width: 210px;
+    height: 206px;
+  }
+
+  .promo__subtitle {
+    margin-top: 24px;
+  }
+
+  .promo__more-btn {
+    margin-top: 79px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+}
