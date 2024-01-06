@@ -1,5 +1,10 @@
 .profile {
   color: #fff;
+  /* margin-bottom: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; */
 }
 .profile__title {
   text-align: center;
@@ -16,7 +21,9 @@
   flex-direction: column;
   margin: 0 auto;
   width: 410px;
-  height: calc(100vh - 353px);
+  height: calc(100vh - 283px);
+  min-height: 400px;
+  /* margin-bottom: 30px; */
 }
 .profile__input-wrapper {
   display: flex;
@@ -36,7 +43,6 @@
 .profile__input-name {
   color: #fff;
   text-align: right;
-  font-family: Inter;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
@@ -48,7 +54,6 @@
 .profile__input-email {
   color: #fff;
   text-align: right;
-  font-family: Inter;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
@@ -65,9 +70,16 @@
   font-weight: 400;
   line-height: normal;
   margin-top: auto;
+  /* margin-top: 130px; */
 }
 .profile__error-msg_visible {
   color: #ee3465;
+}
+
+.profile__buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 70px;
 }
 .profile__edit-button {
   text-align: center;
@@ -79,7 +91,11 @@
   background-color: #202020;
   border: 0;
   outline: none;
-  margin-top: auto;
+
+  /* margin-top: auto; */
+  margin-top: 30px;
+  padding-top: 30px;
+
   margin-bottom: 14px;
 }
 .profile__edit-button:hover {
@@ -99,6 +115,7 @@
   border: 0;
   outline: none;
   text-decoration: none;
+  /* padding-bottom: 30px; */
 }
 .profile__exit-button:hover {
   opacity: 0.8;
@@ -118,8 +135,11 @@
   border-radius: 3px;
   background: #4285f4;
   height: 45px;
-  margin-top: 20px;
-  margin-bottom: 14px;
+  width: 100%;
+  margin-top: 62px;
+  /* margin-bottom: 30px; */
+  /* padding: 0; */
+  flex-shrink: 0;
 }
 .profile__save-button:disabled {
   color: #c2c2c2;
@@ -140,14 +160,21 @@
     margin-bottom: 79px;
   }
   .profile__edit-form {
-    height: 366px;
+    height: 360px;
   }
   .profile__input-wrapper {
     padding-top: 16px;
     padding-bottom: 15px;
   }
-  .profile__exit-button {
-    margin-bottom: 30px;
+  .profile__error-msg {
+    margin-top: 150px;
+  }
+  .profile__edit-button {
+    padding-top: 20px;
+    margin-top: 10px;
+  }
+  .profile__save-button {
+    margin-top: 30px;
   }
 }
 
@@ -158,11 +185,17 @@
   }
   .profile__edit-form {
     width: 260px;
-    height: calc(100vh - 277px);
+    height: calc(100vh - 246px);
   }
-
+  .profile__error-msg {
+    margin-top: auto;
+  }
+  .profile__buttons-wrapper {
+    padding-bottom: 30px;
+  }
   .profile__edit-button {
     font-size: 12px;
+    /* margin-top: 199px; */
     margin-top: auto;
   }
   .profile__exit-button {

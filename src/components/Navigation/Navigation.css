@@ -40,6 +40,11 @@
   align-items: center;
 }
 
+.navigation__profile-wrapper:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .navigation__profile-link {
   color: white;
   margin-left: 48px;
@@ -130,7 +135,6 @@
     margin-right: 0;
     color: #fff;
     text-align: center;
-    font-family: Inter;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -181,7 +185,7 @@
     width: auto;
     font-size: 14px;
     line-height: 16px;
-    padding-bottom: 4px;
+    /* padding-bottom: 4px; */
     border-bottom: 2px solid transparent;
   }
 

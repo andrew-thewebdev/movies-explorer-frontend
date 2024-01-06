@@ -15,7 +15,7 @@ const MoviesCardList = ({ moviesData }) => {
     numOfCardsOnScreen = 5;
   }
   return (
-    <div className='movies-list'>
+    <section className='movies-list'>
       <div className='movies-list__cards'>
         {moviesData.slice(0, numOfCardsOnScreen).map((propsData) => (
           <MoviesCard key={propsData._id} {...propsData} />
@@ -30,7 +30,7 @@ const MoviesCardList = ({ moviesData }) => {
       >
         Ещё
       </button>
-    </div>
+    </section>
   );
 };
 

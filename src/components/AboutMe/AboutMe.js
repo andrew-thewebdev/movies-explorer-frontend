@@ -4,7 +4,7 @@ import myphoto from '../../images/pic__COLOR_pic.jpg';
 
 const AboutMe = () => {
   return (
-    <div className='aboutme'>
+    <section className='aboutme'>
       <h2 className='aboutme__header'>Студент</h2>
       <div className='aboutme__container'>
         <div className='aboutme__descr-wrapper'>
@@ -28,7 +28,7 @@ const AboutMe = () => {
         </div>
         <img src={myphoto} alt='Фото автора' className='aboutme__photo' />
       </div>
-    </div>
+    </section>
   );
 };
 

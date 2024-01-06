@@ -15,11 +15,13 @@ const Movies = ({ loggedIn }) => {
   return (
     <>
       <Header loggedIn={loggedIn} />
-      <SearchForm
-        isShortMoviesSelected={isShortMoviesSelected}
-        onTumblerClicked={onTumblerClicked}
-      />
-      <MoviesCardList moviesData={moviesData} />
+      <main>
+        <SearchForm
+          isShortMoviesSelected={isShortMoviesSelected}
+          onTumblerClicked={onTumblerClicked}
+        />
+        <MoviesCardList moviesData={moviesData} />
+      </main>
 
       <Footer />
     </>

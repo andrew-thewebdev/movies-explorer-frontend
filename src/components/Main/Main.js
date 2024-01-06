@@ -11,11 +11,13 @@ const Main = ({ loggedIn }) => {
   return (
     <>
       <Header loggedIn={loggedIn} />
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+      <main>
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
       <Footer />
     </>
   );

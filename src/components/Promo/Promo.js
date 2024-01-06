@@ -4,7 +4,7 @@ import './Promo.css';
 
 const Promo = () => {
   return (
-    <div className='promo'>
+    <section className='promo'>
       <img
         src={globus}
         alt='изображение глобуса'
@@ -23,7 +23,7 @@ const Promo = () => {
       {/* <button href='#aboutprj' className='promo__more-btn'>
         Узнать больше
       </button> */}
-    </div>
+    </section>
   );
 };
 

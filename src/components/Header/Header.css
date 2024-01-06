@@ -17,12 +17,12 @@
   display: block;
 }
 
-.header_type_main {
-  background-color: #073042;
+.header__logo:hover {
+  opacity: 0.7;
 }
 
-.header__logo-wrapper {
-  font: 0;
+.header_type_main {
+  background-color: #073042;
 }
 
 @media screen and (max-width: 1279px) {

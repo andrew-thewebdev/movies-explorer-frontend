@@ -3,7 +3,7 @@ import './AboutProject.css';
 
 const AboutProject = () => {
   return (
-    <div id='aboutprj' className='about-project'>
+    <section id='aboutprj' className='about-project'>
       <h2 className='about-project__title'>О проекте</h2>
       <div className='about-project__descr-wrapper'>
         <div className='about-project__descr-item'>
@@ -32,7 +32,7 @@ const AboutProject = () => {
         <p className='about-project__diagram-descr'>Back-end</p>
         <p className='about-project__diagram-descr'>Front-end</p>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -72,10 +72,8 @@ const Navigation = ({ loggedIn }) => {
         >
           Сохраненные фильмы
         </NavLink>
-        <div className='navigation__profile-wrapper'>
-          <Link to='/profile' className='navigation__profile-link'>
-            Аккаунт
-          </Link>
+        <Link to='/profile' className='navigation__profile-wrapper'>
+          <div className='navigation__profile-link'>Аккаунт</div>
           <div
             className={`navigation__profile-icon-wrapper ${
               onMainPage ? 'navigation__profile-icon-wrapper_type_main' : ''
@@ -96,7 +94,7 @@ const Navigation = ({ loggedIn }) => {
               />
             </svg>
           </div>
-        </div>
+        </Link>
         <img
           src={closeButton}
           alt='кнопка закрытия мобильного меню'

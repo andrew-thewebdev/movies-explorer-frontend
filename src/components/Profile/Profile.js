@@ -48,75 +48,81 @@ const Profile = ({ loggedIn, onSignOut }) => {
   };
 
   return (
-    <div className='profile'>
+    <>
       <Header loggedIn={loggedIn} />
-      <h2 className='profile__title'>Привет, Виталий!</h2>
-      <form onSubmit={handleSubmit} className='profile__edit-form'>
-        <div className='profile__input-wrapper'>
-          <label className='profile__input-label'>Имя</label>
-          <input
-            id='name'
-            ref={inputRef}
-            name='name'
-            className='profile__input-name'
-            type='text'
-            required
-            minLength={2}
-            maxLength={40}
-            value={name}
-            onChange={handleChangeName}
-            readOnly={!isEditable}
-          />
-        </div>
-        <div className='profile__input-wrapper'>
-          <label className='profile__input-label'>E-mail</label>
-          <input
-            id='email'
-            name='email'
-            className='profile__input-email'
-            type='email'
-            required
-            value={email}
-            onChange={handleChangeEmail}
-            readOnly={!isEditable}
-          />
-        </div>
-        <span
-          className={`profile__error-msg ${
-            isErrVisible ? 'profile__error-msg_visible' : ''
-          }`}
-        >
-          При обновлении профиля произошла ошибка.
-        </span>
-        <button
-          type='button'
-          onClick={handleEditButtonClick}
-          className={`profile__edit-button ${
-            isEditable ? 'profile__edit-button_invisible' : ''
-          } `}
-        >
-          Редактировать
-        </button>
-        <button
-          type='button'
-          onClick={onSignOut}
-          className={`profile__exit-button ${
-            isEditable ? 'profile__exit-button_invisible' : ''
-          }`}
-        >
-          Выйти из аккаунта
-        </button>
-        <button
-          type='submit'
-          className={`profile__save-button  ${
-            !isEditable ? 'profile__save-button_invisible' : ''
-          }`}
-          disabled={isSaveble ? false : true}
-        >
-          Сохранить
-        </button>
-      </form>
-    </div>
+      <main className='profile'>
+        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <form onSubmit={handleSubmit} className='profile__edit-form'>
+          <div className='profile__input-wrapper'>
+            <label className='profile__input-label'>Имя</label>
+            <input
+              id='name'
+              ref={inputRef}
+              name='name'
+              className='profile__input-name'
+              type='text'
+              placeholder='Имя'
+              required
+              minLength={2}
+              maxLength={40}
+              value={name}
+              onChange={handleChangeName}
+              readOnly={!isEditable}
+            />
+          </div>
+          <div className='profile__input-wrapper'>
+            <label className='profile__input-label'>E-mail</label>
+            <input
+              id='email'
+              name='email'
+              className='profile__input-email'
+              type='email'
+              placeholder='E-mail'
+              required
+              value={email}
+              onChange={handleChangeEmail}
+              readOnly={!isEditable}
+            />
+          </div>
+          <span
+            className={`profile__error-msg ${
+              isErrVisible ? 'profile__error-msg_visible' : ''
+            }`}
+          >
+            При обновлении профиля произошла ошибка.
+          </span>
+          <div className='profile__buttons-wrapper'>
+            <button
+              type='button'
+              onClick={handleEditButtonClick}
+              className={`profile__edit-button ${
+                isEditable ? 'profile__edit-button_invisible' : ''
+              } `}
+            >
+              Редактировать
+            </button>
+            <button
+              type='button'
+              onClick={onSignOut}
+              className={`profile__exit-button ${
+                isEditable ? 'profile__exit-button_invisible' : ''
+              }`}
+            >
+              Выйти из аккаунта
+            </button>
+            <button
+              type='submit'
+              className={`profile__save-button  ${
+                !isEditable ? 'profile__save-button_invisible' : ''
+              }`}
+              disabled={isSaveble ? false : true}
+            >
+              Сохранить
+            </button>
+          </div>
+        </form>
+      </main>
+    </>
   );
 };
 

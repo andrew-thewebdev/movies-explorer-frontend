@@ -17,7 +17,7 @@
 }
 .search-form__input {
   padding: 25px 25px;
-  outline: none;
+  /* outline: none; */
   border: none;
   background: #202020;
   color: #8b8b8b;

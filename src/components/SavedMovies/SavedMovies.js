@@ -15,17 +15,18 @@ const SavedMovies = ({ loggedIn }) => {
   return (
     <>
       <Header loggedIn={loggedIn} />
-      <SearchForm
-        isShortMoviesSelected={isShortMoviesSelected}
-        onTumblerClicked={onTumblerClicked}
-      />
-      {/* <Preloader /> */}
-      <MoviesCardList
-        moviesData={moviesData.filter(function (movie) {
-          return movie.saved === true;
-        })}
-      />
-
+      <main>
+        <SearchForm
+          isShortMoviesSelected={isShortMoviesSelected}
+          onTumblerClicked={onTumblerClicked}
+        />
+        {/* <Preloader /> */}
+        <MoviesCardList
+          moviesData={moviesData.filter(function (movie) {
+            return movie.saved === true;
+          })}
+        />
+      </main>
       <Footer />
     </>
   );
