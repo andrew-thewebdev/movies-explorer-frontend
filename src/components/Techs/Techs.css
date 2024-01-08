@@ -1,0 +1,135 @@
+.techs {
+  background: #272727;
+  color: white;
+  /* padding: 0 70px; */
+  padding-left: calc((100vw - 1140px) / 2);
+  padding-right: calc((100vw - 1140px) / 2);
+}
+.techs__title {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  margin: 0;
+  padding-top: 100px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
+}
+
+.techs__subtitle {
+  margin: 0 auto;
+  margin-top: 90px;
+  margin-bottom: 26px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+.techs__description {
+  width: 460px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+}
+.techs__cards {
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.techs__cards-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 60px;
+  border-radius: 10px;
+  background: #303030;
+}
+
+@media screen and (max-width: 1279px) {
+  .techs {
+    padding: 0 70px;
+    margin-top: 1px;
+  }
+  .techs__title {
+    padding-top: 90px;
+  }
+
+  .techs__subtitle {
+    margin-top: 80px;
+    margin-bottom: 22px;
+  }
+  .techs__description {
+    margin-bottom: 83px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+  .techs__cards {
+    padding-bottom: 90px;
+  }
+  .techs__cards-item {
+    width: 84px;
+    height: 57px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .techs {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .techs {
+    background: #202020;
+    padding: 0 18px;
+  }
+  .techs__title {
+    padding-top: 69px;
+    padding-bottom: 28px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    border-bottom-color: black;
+  }
+  .techs__wrapper {
+  }
+  .techs__subtitle {
+    margin-top: 60px;
+    margin-bottom: 24px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: normal;
+    font-style: normal;
+    letter-spacing: -1.2px;
+  }
+  .techs__description {
+    margin-bottom: 50px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+    width: 270px;
+  }
+  .techs__cards {
+    display: grid;
+    grid-template-columns: 84px 84px;
+    gap: 10px 10px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 70px;
+  }
+  .techs__cards-item {
+  }
+}
