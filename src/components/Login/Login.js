@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../../images/logo.png';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import { useFormWithValidation } from '../../utils/hooks';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, loginErrMsg }) => {
+  const { values, handleChange, errors, isValid } = useFormWithValidation();
+
+  const [loginErrorMessage, setLoginErrorMessage] = useState(loginErrMsg);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+
+  useEffect(() => {
+    if (errors.email !== '' || errors.password !== '' || isValid === false) {
+      setIsSubmitDisabled(true);
+    } else {
+      setIsSubmitDisabled(false);
+    }
+  }, [values, errors, isValid]);
+
+  useEffect(() => {
+    setLoginErrorMessage(loginErrMsg);
+    setTimeout(() => {
+      setLoginErrorMessage('');
+    }, 2000);
+  }, [loginErrMsg]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin();
+    onLogin({
+      email: values.email,
+      password: values.password,
+    }).then(() => {
+      setLoginErrorMessage(loginErrMsg);
+      setTimeout(() => {
+        setLoginErrorMessage('');
+      }, 2000);
+    });
   };
 
   return (
@@ -27,22 +56,34 @@ const Login = ({ onLogin }) => {
             placeholder='E-mail'
             className='login__input-email'
             required
-            // value={email}
-            // onChange={handleChangeEmail}
+            value={values.email}
+            onChange={handleChange}
           />
+          <p className='login__error-msg login__error-msg_visible'>
+            {errors.email}
+          </p>
           <label className='login__input-label'>Пароль</label>
           <input
             id='password'
             name='password'
             type='password'
-            // value={password}
-            // onChange={({ target }) => setPassword(target.value)}
+            value={values.password}
+            onChange={handleChange}
             placeholder='Password'
             className='login__input-password'
             required
           />
-          <p className='login__error-msg'>Что-то пошло не так...</p>
-          <button type='submit' className='login__submit-button'>
+          <p className='login__error-msg login__error-msg_visible'>
+            {errors.password}
+          </p>
+          <p className='login__submit-error-msg login__submit-error-msg_visible'>
+            {loginErrorMessage}
+          </p>
+          <button
+            type='submit'
+            disabled={isSubmitDisabled}
+            className='login__submit-button'
+          >
             Войти
           </button>
         </form>

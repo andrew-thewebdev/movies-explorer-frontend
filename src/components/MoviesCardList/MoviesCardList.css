@@ -12,6 +12,12 @@
   column-gap: 30px;
   row-gap: 32px;
 }
+
+.movies-list__error-msg {
+  margin: 0 auto;
+  color: #ee3465;
+}
+
 .movies-list__more-btn {
   color: #fff;
   text-align: center;

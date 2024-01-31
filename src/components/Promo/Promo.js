@@ -20,9 +20,6 @@ const Promo = () => {
       <a href='#aboutprj' className='promo__more-btn'>
         Узнать больше
       </a>
-      {/* <button href='#aboutprj' className='promo__more-btn'>
-        Узнать больше
-      </button> */}
     </section>
   );
 };

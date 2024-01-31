@@ -4,12 +4,11 @@ import './Navigation.css';
 import mobmenu from '../../images/icon__COLOR_humburger.png';
 import closeButton from '../../images/close.png';
 
-const Navigation = ({ loggedIn }) => {
+const Navigation = ({ isLoggedIn }) => {
   const location = useLocation();
 
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
   function openMobileMenu() {
-    console.log('clicked');
     setIsMobileMenuOpened(true);
   }
   function closeMobileMenu() {
@@ -21,7 +20,7 @@ const Navigation = ({ loggedIn }) => {
     onMainPage = true;
   }
 
-  if (!loggedIn) {
+  if (!isLoggedIn) {
     return (
       <nav className='navigation'>
         <Link to='/signup' className='navigation__signup-link'>

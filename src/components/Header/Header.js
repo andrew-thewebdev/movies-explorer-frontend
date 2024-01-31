@@ -5,7 +5,7 @@ import logo from '../../images/logo.png';
 
 import { Link, useLocation } from 'react-router-dom';
 
-const Header = ({ loggedIn }) => {
+const Header = ({ isLoggedIn }) => {
   const location = useLocation();
   let onMainPage = false;
 
@@ -18,7 +18,7 @@ const Header = ({ loggedIn }) => {
       <Link to='/' className='header__logo-wrapper'>
         <img src={logo} className='header__logo' alt='логотип' />
       </Link>
-      <Navigation loggedIn={loggedIn} />
+      <Navigation isLoggedIn={isLoggedIn} />
     </header>
   );
 };
