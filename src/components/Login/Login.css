@@ -49,24 +49,13 @@
   padding: 0;
   padding-top: 1px;
   padding-bottom: 9px;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
+  margin-bottom: 6px;
   background-color: transparent;
   border: 0;
   border-bottom: 1px solid #424242;
 }
-.login__input-name {
-  color: #fff;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  padding: 0;
-  padding-bottom: 9px;
-  margin-bottom: 24px;
-  background-color: transparent;
-  border: 0;
-  border-bottom: 1px solid #424242;
-}
+
 .login__input-label {
   color: #8b8b8b;
 
@@ -97,12 +86,30 @@
   font-weight: 400;
   line-height: normal;
   margin: 0;
-  margin-bottom: 202px;
+  margin-bottom: 6px;
+  min-height: 12px;
 }
 
 .login__error-msg_visible {
   color: #ee3465;
 }
+
+.login__submit-error-msg {
+  color: transparent;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 auto;
+  margin-top: 165px;
+  /* margin-bottom: -2px; */
+  min-height: 13px;
+}
+
+.login__submit-error-msg_visible {
+  color: #ee3465;
+}
+
 .login__footer {
   display: flex;
   justify-content: center;
@@ -131,12 +138,21 @@
   height: 45px;
   background: #4285f4;
   margin-bottom: 16px;
-  margin-top: auto;
+  /* margin-top: auto; */
+  margin-top: 18px;
 }
 
 .login__submit-button:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+.login__submit-button:disabled {
+  background: #696969;
+}
+.login__submit-button:disabled:hover {
+  opacity: 1;
+  cursor: default;
 }
 
 .login__already-question {
@@ -223,8 +239,15 @@
   }
   .login__input-password {
   }
-  .login__error-msg {
+  /* .login__error-msg {
     margin-bottom: 290px;
+  } */
+  .login__error-msg:last-of-type {
+    margin-bottom: 222px;
+    /* margin-bottom: 0; */
+  }
+  .login__submit-error-msg {
+    margin-top: 250px;
   }
   .login__footer {
     font-size: 12px;
@@ -235,7 +258,7 @@
     font-size: 12px;
     margin-bottom: 14px;
 
-    margin-top: auto;
+    margin-top: 20px;
   }
   .login__already-question {
   }

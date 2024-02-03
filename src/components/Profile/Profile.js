@@ -1,40 +1,59 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Header from '../Header/Header';
 import './Profile.css';
+import { useFormWithValidation } from '../../utils/hooks';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-const Profile = ({ loggedIn, onSignOut }) => {
-  let currentUser = {
-    name: 'Виталий',
-    email: 'pochta@yandex.ru',
-  };
+const Profile = ({
+  isLoggedIn,
+  onSignOut,
+  updateProfileErrMsg,
+  onProfileUpdate,
+  isProfileUpdated,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
 
-  const [name, setName] = useState(currentUser.name);
-  const [email, setEmail] = useState(currentUser.email);
   const [isEditable, setIsEditable] = useState(false);
   const [isSaveble, setIsSaveble] = useState(false);
-  const [isErrVisible, setIsErrVisible] = useState(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] =
+    useState(isProfileUpdated);
+  const [updateProfileErrorMessage, setUpdateProfileErrorMessage] =
+    useState(updateProfileErrMsg);
+
+  const { values, handleChange, errors, isValid, setValues } =
+    useFormWithValidation();
+
+  useEffect(() => {
+    setValues({ ...values, name: currentUser.name, email: currentUser.email });
+  }, []);
+
+  useEffect(() => {
+    if (
+      values.name !== currentUser.name ||
+      values.email !== currentUser.email
+    ) {
+      setIsSaveble(true);
+    } else {
+      setIsSaveble(false);
+    }
+  }, [values, currentUser]);
+
+  useEffect(() => {
+    setValues({ ...values, name: currentUser.name, email: currentUser.email });
+  }, [currentUser, setValues]);
+
+  useEffect(() => {
+    setUpdateProfileErrorMessage(updateProfileErrMsg);
+    setTimeout(() => {
+      setUpdateProfileErrorMessage('');
+    }, 2000);
+  }, [updateProfileErrMsg]);
+
+  useEffect(() => {
+    setIsSubmitSuccessful(isProfileUpdated);
+  }, [isProfileUpdated]);
 
   const inputRef = useRef(null);
-  console.log('isEditable', isEditable);
-  console.log('isSaveble', isSaveble);
-
-  function handleChangeName(e) {
-    if (e.target.value !== currentUser.name) {
-      setIsSaveble(true);
-    } else {
-      setIsSaveble(false);
-    }
-    setName(e.target.value);
-  }
-
-  function handleChangeEmail(e) {
-    if (e.target.value !== currentUser.email) {
-      setIsSaveble(true);
-    } else {
-      setIsSaveble(false);
-    }
-    setEmail(e.target.value);
-  }
 
   function handleEditButtonClick() {
     setIsEditable(true);
@@ -43,15 +62,18 @@ const Profile = ({ loggedIn, onSignOut }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsErrVisible(true); //для демонстрации верстки
-    setIsSaveble(false); //для демонстрации верстки
+
+    onProfileUpdate({
+      name: values.name,
+      email: values.email,
+    });
   };
 
   return (
     <>
-      <Header loggedIn={loggedIn} />
+      <Header isLoggedIn={isLoggedIn} />
       <main className='profile'>
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h2 className='profile__title'>Привет, {currentUser.name}!</h2>
         <form onSubmit={handleSubmit} className='profile__edit-form'>
           <div className='profile__input-wrapper'>
             <label className='profile__input-label'>Имя</label>
@@ -65,10 +87,11 @@ const Profile = ({ loggedIn, onSignOut }) => {
               required
               minLength={2}
               maxLength={40}
-              value={name}
-              onChange={handleChangeName}
+              defaultValue={values.name}
+              onChange={handleChange}
               readOnly={!isEditable}
             />
+            <p className='profile__validation-err-msg'>{errors.name}</p>
           </div>
           <div className='profile__input-wrapper'>
             <label className='profile__input-label'>E-mail</label>
@@ -79,17 +102,18 @@ const Profile = ({ loggedIn, onSignOut }) => {
               type='email'
               placeholder='E-mail'
               required
-              value={email}
-              onChange={handleChangeEmail}
+              defaultValue={values.email}
+              onChange={handleChange}
               readOnly={!isEditable}
             />
+            <p className='profile__validation-err-msg'>{errors.email}</p>
           </div>
           <span
-            className={`profile__error-msg ${
-              isErrVisible ? 'profile__error-msg_visible' : ''
+            className={`profile__error-msg profile__error-msg_visible ${
+              isSubmitSuccessful ? 'profile__error-msg_green' : ''
             }`}
           >
-            При обновлении профиля произошла ошибка.
+            {updateProfileErrorMessage}
           </span>
           <div className='profile__buttons-wrapper'>
             <button

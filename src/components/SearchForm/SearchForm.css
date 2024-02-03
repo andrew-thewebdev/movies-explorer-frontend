@@ -13,14 +13,20 @@
 
   border-radius: 8px;
   outline: 1.5px solid rgba(170, 170, 170, 0.2);
-  color: #8b8b8b;
+  /* color: #8b8b8b; */
 }
+
+/* .search-form__container_red-border {
+  outline-color: #ee3465;
+} */
+
 .search-form__input {
   padding: 25px 25px;
   /* outline: none; */
   border: none;
   background: #202020;
   color: #8b8b8b;
+  /* color: #ee3465; */
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -32,6 +38,17 @@
   font-weight: 400;
   line-height: 20px;
 }
+
+.search-form__input_red {
+  /* outline-color: #ee3465; */
+  color: #ee3465;
+}
+
+.search-form__input_red::placeholder {
+  color: #ee3465;
+  opacity: 1; /* Firefox */
+}
+
 .search-form__submit-btn {
   margin: 10px;
   padding: 0;
