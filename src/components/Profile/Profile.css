@@ -90,6 +90,10 @@
   color: #ee3465;
 }
 
+.profile__error-msg_green {
+  color: #3ddc84;
+}
+
 .profile__buttons-wrapper {
   display: flex;
   flex-direction: column;

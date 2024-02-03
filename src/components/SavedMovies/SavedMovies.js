@@ -32,14 +32,51 @@ const SavedMovies = ({
   const [savedFilms, setSavedFilms] = useState([]);
 
   const [searchedFilm, setSearchedFilm] = useState('');
+  const [isSearchDone, setIsSearchDone] = useState(false);
+  const [searchError, setSearchError] = useState('');
 
   useEffect(() => {
     const newCards = mapCards(savedPreviouslyFilms);
     setSavedFilms(newCards);
-  }, [savedPreviouslyFilms]);
+    //для высвечивания надписи о том что ничего не найдено
+    if (savedPreviouslyFilms.length === 0 && isSearchDone) {
+      setSearchError('Ничего не найдено');
+    }
+  }, [savedPreviouslyFilms, isSearchDone]);
+
+  useEffect(() => {
+    if (isShortMoviesSelected) {
+      if (
+        savedFilms
+          .filter((item) => item.duration <= 40)
+          .filter(
+            (item) =>
+              item.nameRU.toLowerCase().includes(searchedFilm.toLowerCase()) ||
+              item.nameEN.toLowerCase().includes(searchedFilm.toLowerCase()),
+          ).length === 0
+      ) {
+        setSearchError('Ничего не найдено');
+      } else {
+        setSearchError('');
+      }
+    } else {
+      if (
+        savedFilms.filter(
+          (item) =>
+            item.nameRU.toLowerCase().includes(searchedFilm.toLowerCase()) ||
+            item.nameEN.toLowerCase().includes(searchedFilm.toLowerCase()),
+        ).length === 0
+      ) {
+        setSearchError('Ничего не найдено');
+      } else {
+        setSearchError('');
+      }
+    }
+  }, [isShortMoviesSelected, savedFilms, searchedFilm]);
 
   function onTumblerClicked() {
     setIsShortMoviesSelected((prevValue) => !prevValue);
+    setIsSearchDone(true);
   }
 
   const onDeleteMovie = (id) => {
@@ -54,6 +91,34 @@ const SavedMovies = ({
   };
   const onSearchSubmit = (searchedFilm) => {
     setSearchedFilm(searchedFilm);
+    setIsSearchDone(true);
+    if (isShortMoviesSelected) {
+      if (
+        savedFilms
+          .filter((item) => item.duration <= 40)
+          .filter(
+            (item) =>
+              item.nameRU.toLowerCase().includes(searchedFilm.toLowerCase()) ||
+              item.nameEN.toLowerCase().includes(searchedFilm.toLowerCase()),
+          ).length === 0
+      ) {
+        setSearchError('Ничего не найдено');
+      } else {
+        setSearchError('');
+      }
+    } else {
+      if (
+        savedFilms.filter(
+          (item) =>
+            item.nameRU.toLowerCase().includes(searchedFilm.toLowerCase()) ||
+            item.nameEN.toLowerCase().includes(searchedFilm.toLowerCase()),
+        ).length === 0
+      ) {
+        setSearchError('Ничего не найдено');
+      } else {
+        setSearchError('');
+      }
+    }
   };
 
   return (
@@ -73,15 +138,25 @@ const SavedMovies = ({
                   .filter((item) => item.duration <= 40)
                   .filter(
                     (item) =>
-                      item.nameRU.includes(searchedFilm) ||
-                      item.nameEN.includes(searchedFilm),
+                      item.nameRU
+                        .toLowerCase()
+                        .includes(searchedFilm.toLowerCase()) ||
+                      item.nameEN
+                        .toLowerCase()
+                        .includes(searchedFilm.toLowerCase()),
                   )
               : savedFilms.filter(
                   (item) =>
-                    item.nameRU.includes(searchedFilm) ||
-                    item.nameEN.includes(searchedFilm),
+                    item.nameRU
+                      .toLowerCase()
+                      .includes(searchedFilm.toLowerCase()) ||
+                    item.nameEN
+                      .toLowerCase()
+                      .includes(searchedFilm.toLowerCase()),
                 )
           }
+          isSearchDone={isSearchDone}
+          searchError={searchError}
           onDeleteMovie={onDeleteMovie}
         />
       </main>

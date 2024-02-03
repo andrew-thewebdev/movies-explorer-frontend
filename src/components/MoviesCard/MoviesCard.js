@@ -32,17 +32,17 @@ const MoviesCard = ({
   }
 
   function handleDeleteMovie(id) {
-    setIsSaved(false);
+    // setIsSaved(false);
     onDeleteMovie(id);
   }
 
   function handleSaveOrDeleteMovie() {
     if (isSaved) {
-      setIsSaved(false);
+      // setIsSaved(false);
       handleDeleteMovie(id);
       return;
     }
-    setIsSaved(true);
+    // setIsSaved(true);
     onSaveMovie({
       id,
       src,
@@ -60,10 +60,6 @@ const MoviesCard = ({
     });
   }
 
-  // function handleImageClick() {
-  //   console.log('img clicked');
-  // }
-
   if (location.pathname === '/saved-movies') {
     return (
       <div className='movies-card'>
@@ -79,12 +75,7 @@ const MoviesCard = ({
           rel='noreferrer'
           className='movies-card__img-wrapper-link'
         >
-          <img
-            src={src}
-            alt={alt}
-            // onClick={handleImageClick}
-            className='movies-card__img'
-          />
+          <img src={src} alt={alt} className='movies-card__img' />
         </a>
         <img
           onClick={handleDeleteSavedMovie}
@@ -109,13 +100,7 @@ const MoviesCard = ({
         rel='noreferrer'
         className='movies-card__img-wrapper-link'
       >
-        <img
-          src={src}
-          alt={alt}
-          // onClick={handleImageClick}
-          border='0'
-          className='movies-card__img'
-        />
+        <img src={src} alt={alt} border='0' className='movies-card__img' />
       </a>
       <img
         onClick={handleSaveOrDeleteMovie}

@@ -48,7 +48,8 @@ const Movies = ({
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchDone, setIsSearchDone] = useState(false);
-  const [searchError, setSearchError] = useState('Ничего не найдено...');
+  // const [searchError, setSearchError] = useState('Ничего не найдено...');
+  const [searchError, setSearchError] = useState('');
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -56,11 +57,27 @@ const Movies = ({
 
   function onTumblerClicked() {
     setIsShortMoviesSelected((prevValue) => !prevValue);
+    setIsSearchDone(true);
   }
 
   const detectSize = () => {
     setScreenWidth(window.innerWidth);
   };
+
+  useEffect(() => {
+    const storedSearch = localStorage.getItem('searched');
+    if (storedSearch !== '""') {
+      // console.log('уже был поиск', storedSearch);
+      setIsSearchDone(true);
+      if (cards.length === 0) {
+        setSearchError('Ничего не найдено');
+      }
+    } else {
+      // console.log('не было поисков еще');
+      setIsSearchDone(false);
+      setSearchError('');
+    }
+  }, [cards]);
 
   useEffect(() => {
     setSavedFilms(savedPreviouslyFilms);
@@ -101,8 +118,10 @@ const Movies = ({
       .then((data) => {
         let foundData = data.filter(
           (item) =>
-            item.nameRU.includes(searchedData) ||
-            item.nameEN.includes(searchedData),
+            // item.nameRU.includes(searchedData) ||
+            // item.nameEN.includes(searchedData),
+            item.nameRU.toLowerCase().includes(searchedData.toLowerCase()) ||
+            item.nameEN.toLowerCase().includes(searchedData.toLowerCase()),
         );
         if (foundData.length === 0) {
           setSearchError('Ничего не найдено');
@@ -132,7 +151,7 @@ const Movies = ({
   };
 
   const onSaveMovie = (data) => {
-    mainApi
+    return mainApi
       .saveFilm(data)
       .then((newFilm) => {
         handleSaveFilm(newFilm);
@@ -141,6 +160,7 @@ const Movies = ({
         console.log(`Ошибка ${err}`);
       });
   };
+
   const onDeleteMovie = (id) => {
     const filmtodelete = savedFilms.filter((film) => film.movieId === id);
     console.log('film from db to delete:', filmtodelete);

@@ -19,6 +19,7 @@ const App = () => {
   const [registerErrMsg, setRegisterErrMsg] = useState('');
   const [loginErrMsg, setLoginErrMsg] = useState('');
   const [updateProfileErrMsg, setUpdateProfileErrMsg] = useState('');
+  const [isProfileUpdated, setIsProfileUpdated] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
@@ -105,11 +106,19 @@ const App = () => {
     return mainApi
       .updateProfile({ name: name, email: email })
       .then(({ name, email }) => {
-        setUpdateProfileErrMsg('');
+        setIsProfileUpdated(true);
+        setUpdateProfileErrMsg('Обновление профиля прошло успешно');
+        setTimeout(() => {
+          setUpdateProfileErrMsg('');
+        }, 2000);
         setCurrentUser({ name, email });
       })
       .catch((err) => {
         setUpdateProfileErrMsg(err.message);
+        setTimeout(() => {
+          setUpdateProfileErrMsg('');
+        }, 2000);
+        setIsProfileUpdated(false);
       });
   };
 
@@ -157,6 +166,7 @@ const App = () => {
               onSignOut={handleSignOut}
               onProfileUpdate={handleProfileUpdate}
               updateProfileErrMsg={updateProfileErrMsg}
+              isProfileUpdated={isProfileUpdated}
               component={Profile}
             />
           }

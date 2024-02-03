@@ -9,11 +9,14 @@ const Profile = ({
   onSignOut,
   updateProfileErrMsg,
   onProfileUpdate,
+  isProfileUpdated,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
   const [isEditable, setIsEditable] = useState(false);
   const [isSaveble, setIsSaveble] = useState(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] =
+    useState(isProfileUpdated);
   const [updateProfileErrorMessage, setUpdateProfileErrorMessage] =
     useState(updateProfileErrMsg);
 
@@ -46,6 +49,10 @@ const Profile = ({
     }, 2000);
   }, [updateProfileErrMsg]);
 
+  useEffect(() => {
+    setIsSubmitSuccessful(isProfileUpdated);
+  }, [isProfileUpdated]);
+
   const inputRef = useRef(null);
 
   function handleEditButtonClick() {
@@ -59,11 +66,6 @@ const Profile = ({
     onProfileUpdate({
       name: values.name,
       email: values.email,
-    }).then(() => {
-      setUpdateProfileErrorMessage(updateProfileErrMsg);
-      setTimeout(() => {
-        setUpdateProfileErrorMessage('');
-      }, 2000);
     });
   };
 
@@ -106,7 +108,11 @@ const Profile = ({
             />
             <p className='profile__validation-err-msg'>{errors.email}</p>
           </div>
-          <span className='profile__error-msg profile__error-msg_visible'>
+          <span
+            className={`profile__error-msg profile__error-msg_visible ${
+              isSubmitSuccessful ? 'profile__error-msg_green' : ''
+            }`}
+          >
             {updateProfileErrorMessage}
           </span>
           <div className='profile__buttons-wrapper'>
